@@ -103,7 +103,7 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 .top.scrolled .brand img{height:40px}
 @media (min-width:861px){.top.scrolled .brand .bn{font-size:1.15rem}}
 @media (max-width:520px){.nav .btn{display:none}.top.scrolled .wrap{padding:8px 18px}}
-.top.scrolled .brand .bs{opacity:0;max-height:0}
+.top.scrolled .brand .bs{font-size:.58rem}
 .brand{display:inline-flex;align-items:center;gap:14px;text-decoration:none;color:var(--grafite)}
 .brand img{height:58px;width:auto}
 .brand .bt{display:grid;gap:5px;line-height:1}
@@ -711,7 +711,7 @@ footer p{max-width:60ch;line-height:1.6}
       .add(function(){html.classList.remove("intro-on");if(lenis)lenis.start();ScrollTrigger.refresh()});
   }
   intro.from(".hero h1 .line>span",{yPercent:115,duration:1.25,stagger:.12,ease:"expo.out"},withIntro?"-=.55":0)
-    .from(".hero-photo",{clipPath:"inset(100% 0 0 0 round 999px 999px 6px 6px)",duration:1.5,ease:"expo.inOut"},"<-.2")
+    .from(".hero-photo",{clipPath:"inset(100% 0 0 0 round 999px 999px 6px 6px)",duration:1.5,ease:"expo.inOut",clearProps:"clipPath"},"<-.2")
     .from(".hero-photo img",{scale:1.35,duration:2.2,ease:"expo.out"},"<")
     .from("[data-hero]",{y:26,opacity:0,duration:1,stagger:.09},"<.5")
 ;
@@ -755,7 +755,7 @@ footer p{max-width:60ch;line-height:1.6}
 
   /* Fotos com revelação e paralaxe interna */
   gsap.utils.toArray(".about-photo, .intl-photos > div").forEach(function(el){
-    gsap.from(el,{clipPath:"inset(22% 8% 22% 8%)",duration:1.6,ease:"expo.out",scrollTrigger:{trigger:el,start:"top 85%",once:true}});
+    gsap.from(el,{clipPath:"inset(22% 8% 22% 8%)",duration:1.6,ease:"expo.out",clearProps:"clipPath",scrollTrigger:{trigger:el,start:"top 85%",once:true}});
     gsap.fromTo(el.querySelector("img"),{yPercent:-6},{yPercent:6,ease:"none",scrollTrigger:{trigger:el,start:"top bottom",end:"bottom top",scrub:true}});
   });
   gsap.utils.toArray("[data-speed]").forEach(function(el){gsap.to(el,{y:function(){return -parseFloat(el.dataset.speed)*6},ease:"none",scrollTrigger:{trigger:".intl",start:"top bottom",end:"bottom top",scrub:true}})});
