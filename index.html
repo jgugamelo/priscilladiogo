@@ -78,7 +78,8 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 .intro-on .curtain{display:grid;position:fixed;inset:0;z-index:100;background:var(--noite);place-items:center;color:var(--linho)}
 .curtain .c-in{display:grid;justify-items:center;gap:22px}
 .curtain svg{width:96px;height:auto;overflow:visible}
-.curtain svg path,.curtain svg line{fill:none;stroke:var(--nude);stroke-width:1.2}
+.curtain svg path,.curtain svg line{fill:none;stroke:var(--nude);stroke-width:2.4}
+.curtain svg #c-base,.curtain svg .c-b2{stroke-width:3}
 .curtain .c-name{font-family:var(--f-display);font-size:clamp(1.6rem,1.2rem + 1.4vw,2.4rem);letter-spacing:.32em;text-transform:uppercase;padding-left:.32em;overflow:hidden}
 .curtain .c-name span{display:inline-block}
 .curtain .c-sub{font-size:.72rem;letter-spacing:.4em;text-transform:uppercase;color:var(--nude);padding-left:.4em}
@@ -260,7 +261,7 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 
 /* Palestras e internacional */
 
-.intl{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,80px);align-items:center}
+.intl{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(28px,5vw,80px);align-items:center}
 .intl-photos{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;align-items:start}
 .intl-photos .a{grid-row:span 2;aspect-ratio:3/4;border-radius:999px 999px 4px 4px;overflow:hidden}
 .intl-photos .b,.intl-photos .c{aspect-ratio:4/3;overflow:hidden;border-radius:4px}
@@ -280,6 +281,7 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 .talk h3{font-size:var(--step-1)}
 .talk p{color:var(--muted);font-size:.92rem}
 @media (max-width:1100px){.talk-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:901px){.intl-photos{order:2}}
 @media (max-width:900px){.intl{grid-template-columns:1fr}}
 @media (max-width:600px){.talk-list{grid-template-columns:1fr}}
 
@@ -365,7 +367,7 @@ footer p{max-width:60ch;line-height:1.6}
 
 <div class="curtain" id="curtain" aria-hidden="true">
   <div class="c-in">
-    <svg viewBox="0 0 120 150"><path id="c-arch" d="M14,140 L14,58 A46,46 0 0 1 106,58 L106,140"/><line id="c-base" x1="4" y1="140" x2="116" y2="140"/></svg>
+    <svg viewBox="42 40 132 140"><path id="c-arch" d="M103.5,50 L113.5,50 A56,60 0 0 1 113.5,170 L103.5,170"/><path class="c-p" d="M96.5,50 L82.5,50 A36.96,33.6 0 0 0 82.5,117.2 L96.5,117.2"/><line class="c-p" x1="100" y1="50" x2="100" y2="170" style="stroke-width:7"/><line id="c-base" x1="88" y1="45.5" x2="112" y2="45.5"/><line class="c-b2" x1="88" y1="174.5" x2="112" y2="174.5"/></svg>
     <div class="c-name"><span>Priscilla Diogo</span></div>
     <div class="c-sub">Advocacia trabalhista</div>
   </div>
@@ -374,7 +376,7 @@ footer p{max-width:60ch;line-height:1.6}
 
 <header class="top" id="top">
   <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="Priscilla Diogo, Advocacia Trabalhista, início"><img src="logo/A_simbolo_web.svg" alt="" width="120" height="138"><span class="bt" aria-hidden="true"><span class="bn">Priscilla Diogo</span><span class="bs">Advocacia Trabalhista</span></span></a>
+    <a class="brand" href="#inicio" aria-label="Priscilla Diogo, Advocacia Trabalhista, início"><img src="logo/C_simbolo_web.svg" alt="" width="132" height="140"><span class="bt" aria-hidden="true"><span class="bn">Priscilla Diogo</span><span class="bs">Advocacia Trabalhista</span></span></a>
     <nav class="nav" aria-label="Seções">
       <a href="#atuacao" class="link-u">Atuação</a>
       <a href="#como-funciona" class="link-u">Como funciona</a>
@@ -649,7 +651,7 @@ footer p{max-width:60ch;line-height:1.6}
 <footer>
   <div class="giant" aria-hidden="true"><span id="giant">Priscilla Diogo</span></div>
   <div class="wrap">
-    <a class="brand" href="#inicio" aria-label="Priscilla Diogo, Advocacia Trabalhista"><img src="logo/A_simbolo_web_claro.svg" alt="" width="120" height="138"><span class="bt" aria-hidden="true"><span class="bn">Priscilla Diogo</span><span class="bs">Advocacia Trabalhista</span></span></a>
+    <a class="brand" href="#inicio" aria-label="Priscilla Diogo, Advocacia Trabalhista"><img src="logo/C_simbolo_web_claro.svg" alt="" width="132" height="140"><span class="bt" aria-hidden="true"><span class="bn">Priscilla Diogo</span><span class="bs">Advocacia Trabalhista</span></span></a>
     <p>Priscilla Diogo do Carmo · OAB/RJ nº [preencher]<br>Conteúdo de caráter informativo, conforme o Provimento 205/2021 do Conselho Federal da OAB. © 2026</p>
   </div>
 </footer>
@@ -778,9 +780,11 @@ footer p{max-width:60ch;line-height:1.6}
   if(withIntro){
     if(lenis)lenis.stop();
     var arch=document.getElementById("c-arch"),L=arch.getTotalLength();
-    gsap.set(arch,{strokeDasharray:L,strokeDashoffset:L});gsap.set("#c-base",{scaleX:0,transformOrigin:"50% 50%"});
-    intro.to(arch,{strokeDashoffset:0,duration:1.2,ease:"power2.inOut"})
-      .to("#c-base",{scaleX:1,duration:.6},"-=.5")
+    gsap.set(arch,{strokeDasharray:L,strokeDashoffset:L});gsap.set("#c-base, .c-b2",{scaleX:0,transformOrigin:"50% 50%"});
+    document.querySelectorAll(".c-p").forEach(function(e){var l=e.getTotalLength();gsap.set(e,{strokeDasharray:l,strokeDashoffset:l})});
+    intro.to(".c-p",{strokeDashoffset:0,duration:1,ease:"power2.inOut",stagger:.15})
+      .to(arch,{strokeDashoffset:0,duration:1.1,ease:"power2.inOut"},"-=.7")
+      .to("#c-base, .c-b2",{scaleX:1,duration:.6},"-=.5")
       .from(".c-name span",{yPercent:110,duration:.9},"-=.4")
       .from(".c-sub",{opacity:0,y:8,duration:.6},"-=.5")
       .to("#curtain",{clipPath:"inset(0 0 100% 0)",duration:1.1,ease:"expo.inOut"},"+=.35")
