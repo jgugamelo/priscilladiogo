@@ -97,11 +97,20 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 /* Cabeçalho */
 .top{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:50;padding-left:var(--gl);padding-right:var(--gr);pointer-events:none}
 .top .wrap{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;gap:24px;max-width:var(--max);margin:0 auto;padding:18px 0;border:1px solid transparent;border-radius:999px;transition:max-width .7s var(--ease),padding .7s var(--ease),margin .7s var(--ease),background .5s,box-shadow .5s,border-color .5s}
-.top.scrolled .wrap{max-width:980px;margin-top:12px;padding:8px 8px 8px 20px;background:rgba(248,244,238,.78);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border-color:rgba(217,196,170,.8);box-shadow:0 18px 40px -24px rgba(38,33,29,.45)}
+.top.scrolled .wrap{max-width:1180px;margin-top:12px;padding:8px 8px 8px 20px;background:rgba(248,244,238,.78);backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);border-color:rgba(217,196,170,.8);box-shadow:0 18px 40px -24px rgba(38,33,29,.45)}
 .top .brand img{transition:height .6s var(--ease)}
 .top .brand .bs{transition:opacity .4s,max-height .5s;max-height:1.2em;overflow:hidden}
 .top.scrolled .brand img{height:40px}
 @media (min-width:861px){.top.scrolled .brand .bn{font-size:1.15rem}}
+.menu-btn{display:none;place-content:center;gap:6px;width:46px;height:46px;border-radius:50%;border:1px solid var(--nude);background:var(--linho);cursor:pointer;padding:0}
+.menu-btn i{display:block;width:18px;height:1.5px;background:var(--grafite);transition:transform .4s var(--ease)}
+.menu-btn[aria-expanded="true"] i:first-child{transform:translateY(3.75px) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:last-child{transform:translateY(-3.75px) rotate(-45deg)}
+.menu-panel{pointer-events:auto;position:absolute;left:var(--gl);right:var(--gr);top:calc(100% + 8px);max-width:520px;margin-left:auto;background:rgba(248,244,238,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--nude);border-radius:22px;padding:14px;display:grid;gap:2px;box-shadow:0 24px 50px -24px rgba(38,33,29,.5)}
+.menu-panel a:not(.btn){text-decoration:none;padding:12px 14px;border-radius:12px;font-family:var(--f-display);font-size:1.3rem}
+.menu-panel a:not(.btn):hover{background:var(--areia)}
+.menu-panel .btn{justify-content:center;margin-top:8px}
+@media (min-width:1101px){.menu-panel{display:none!important}}
 @media (max-width:520px){.nav .btn{display:none}.top.scrolled .wrap{padding:8px 18px}}
 .top.scrolled .brand .bs{font-size:.58rem}
 .brand{display:inline-flex;align-items:center;gap:14px;text-decoration:none;color:var(--grafite)}
@@ -109,10 +118,11 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 .brand .bt{display:grid;gap:5px;line-height:1}
 .brand .bn{font-family:var(--f-display);font-size:1.45rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
 .brand .bs{font-size:.66rem;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--ouro);white-space:nowrap}
-.nav{display:flex;gap:30px;align-items:center}
+.nav{display:flex;gap:26px;align-items:center}
 .nav a:not(.btn){text-decoration:none;font-size:.88rem;font-weight:500}
 .nav .btn{padding:.72em 1.25em;font-size:.85rem}
-@media (max-width:860px){.nav a:not(.btn){display:none}.brand img{height:44px}.brand .bn{font-size:1.1rem;letter-spacing:.14em}.brand .bs{font-size:.56rem;letter-spacing:.24em}}
+@media (max-width:1100px){.nav a:not(.btn){display:none}.menu-btn{display:grid}}
+@media (max-width:860px){.brand img{height:44px}.brand .bn{font-size:1.1rem;letter-spacing:.14em}.brand .bs{font-size:.56rem;letter-spacing:.24em}}
 
 /* Hero */
 .hero{padding-block:clamp(120px,14vw,170px) clamp(64px,8vw,110px)}
@@ -124,7 +134,7 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
 .arch{border-radius:999px 999px 6px 6px;overflow:hidden;position:relative;background:var(--nude);isolation:isolate}
 /* Safari/iOS: recorte garantido do arco mesmo com vídeo, blend e transformações nos filhos */
-.arch,.rail figure:nth-child(3n+1) .ph,.intl-photos .a{clip-path:inset(0 round 999px 999px 6px 6px);-webkit-mask-image:-webkit-radial-gradient(white,black);transform:translateZ(0)}
+.arch,.intl-photos .a{clip-path:inset(0 round 999px 999px 6px 6px);-webkit-mask-image:-webkit-radial-gradient(white,black);transform:translateZ(0)}
 .arch img{width:100%;height:100%;object-fit:cover}
 .hero-photo{aspect-ratio:3/4.1}
 .hero-photo img{object-position:50% 28%;transform:scale(1.08)}
@@ -134,7 +144,7 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 .hero-tag{position:absolute;left:-34px;bottom:46px;z-index:2;background:var(--linho);padding:16px 20px;border-radius:4px;box-shadow:0 18px 40px -22px rgba(38,33,29,.6);font-size:.8rem;line-height:1.35;max-width:220px}
 .hero-tag strong{display:block;font-family:var(--f-display);font-size:1.55rem;font-weight:500}
 .hero-side{position:absolute;right:-34px;top:50%;transform:translateY(-50%) rotate(90deg);transform-origin:center;font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:clamp(48px,7vw,84px);padding-top:28px;border-top:1px solid var(--nude)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:clamp(48px,7vw,84px);padding-top:28px;border-top:1px solid var(--nude)}
 .facts b{display:block;font-family:var(--f-display);font-size:var(--step-2);font-weight:500;line-height:1}
 .facts div>span{font-size:.84rem;color:var(--muted)}
 .scroll-cue{display:flex;align-items:center;gap:12px;margin-top:34px;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
@@ -180,19 +190,31 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 /* Áreas — índice editorial */
 .areas-head{display:flex;justify-content:space-between;align-items:end;gap:32px;flex-wrap:wrap;margin-bottom:56px}
 .areas{border-top:1px solid var(--grafite)}
-.area{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr) auto;gap:clamp(18px,4vw,60px);align-items:start;padding:34px 0;border-bottom:1px solid var(--nude);position:relative;isolation:isolate}
+.area{border-bottom:1px solid var(--nude);position:relative;isolation:isolate}
 .area::before{content:"";position:absolute;inset:0 calc(-1 * var(--gl));background:var(--pedra);transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--ease);z-index:-1}
-.area:hover::before{transform:scaleY(1)}
+.area:hover::before,.area.open::before{transform:scaleY(1)}
 .area h3{font-size:clamp(1.7rem,1.3rem + 1.6vw,2.9rem);line-height:1.05;font-weight:400;transition:transform .6s var(--ease)}
-.area:hover h3{transform:translateX(12px)}
+.area-head:hover h3{transform:translateX(10px)}
 .area .ref{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro);font-weight:600;margin-bottom:10px}
-.area p{color:var(--muted);font-size:.96rem;max-width:52ch}
-.area .go{width:52px;height:52px;border-radius:50%;border:1px solid var(--nude);display:grid;place-items:center;text-decoration:none;transition:background .4s,color .4s,border-color .4s,transform .5s var(--ease);flex:none}
-.area:hover .go{background:var(--grafite);color:var(--linho);border-color:var(--grafite);transform:rotate(-45deg)}
-.prev{margin-top:56px;display:grid;grid-template-columns:auto 1fr;gap:12px 40px;align-items:baseline;padding:28px 32px;background:var(--pedra);border-radius:6px}
+.area-head{appearance:none;background:none;border:0;width:100%;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:30px 0;text-align:left;cursor:pointer;color:inherit;font:inherit}
+.area-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.area.open .area-body{grid-template-rows:1fr}
+.area-body>div{overflow:hidden;display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 40px}
+.area-body p{color:var(--muted);font-size:1rem;max-width:62ch;padding-bottom:30px}
+.area-body a{margin-bottom:30px;white-space:nowrap}
+.area .go{width:52px;height:52px;border-radius:50%;border:1px solid var(--nude);flex:none;position:relative;transition:background .4s,border-color .4s,transform .5s var(--ease)}
+.area .go::before,.area .go::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:1.5px;margin:-.75px 0 0 -7px;background:var(--grafite);transition:transform .5s var(--ease),background .4s}
+.area .go::after{transform:rotate(90deg)}
+.area.open .go{background:var(--grafite);border-color:var(--grafite);transform:rotate(180deg)}
+.area.open .go::before,.area.open .go::after{background:var(--linho)}
+.area.open .go::after{transform:rotate(0)}
+.area-head:hover .go{border-color:var(--grafite)}
+.prev{margin-top:56px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px 40px;align-items:center;padding:28px 32px;background:var(--pedra);border-radius:6px}
+.prev-wa{padding:.8em 1.3em;font-size:.88rem;white-space:nowrap}
+@media (max-width:1100px){.prev{grid-template-columns:1fr}.prev-wa{justify-self:start}}
 .prev ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px 30px;padding:0;margin:0}
 .prev li{font-family:var(--f-display);font-size:var(--step-1)}
-@media (max-width:860px){.area{grid-template-columns:1fr auto}.area p{grid-column:1/-1;grid-row:2}.area .go{grid-column:2;grid-row:1}.prev{grid-template-columns:1fr}}
+@media (max-width:860px){.area .go{width:42px;height:42px}.area-head{padding:24px 0}.prev{grid-template-columns:1fr}}
 
 /* Linha do processo */
 .process{background:var(--espresso);color:var(--linho);overflow:hidden}
@@ -222,33 +244,19 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 .about-photo .sig{position:absolute;left:18px;bottom:16px;z-index:2;font-family:var(--f-display);font-style:italic;font-size:1.5rem;color:var(--linho);text-shadow:0 2px 14px rgba(0,0,0,.35)}
 .manifest{font-family:var(--f-display);font-size:var(--step-3);line-height:1.08;margin-block:20px 34px}
 .about-text{display:grid;gap:18px;max-width:60ch}
+.more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .7s var(--ease)}
+.more.open{grid-template-rows:1fr}
+.more-in{overflow:hidden;display:grid;gap:18px}
+.more:not(.open) .more-in{-webkit-mask-image:linear-gradient(#000,transparent);mask-image:linear-gradient(#000,transparent)}
+.more-btn{justify-self:start;appearance:none;background:none;border:0;border-bottom:1px solid var(--grafite);padding:4px 0;font:600 .88rem var(--f-body);color:var(--grafite);cursor:pointer;display:inline-flex;gap:10px;align-items:center}
+.more-btn i{font-style:normal;transition:transform .4s var(--ease)}
+.more-btn[aria-expanded="true"] i{transform:rotate(45deg)}
 .creds{margin-top:44px;border-top:1px solid var(--nude)}
 .cred{display:grid;grid-template-columns:150px 1fr;gap:18px;padding-block:16px;border-bottom:1px solid var(--nude);font-size:.95rem}
 .cred dt{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro);font-weight:600;padding-top:3px}
 .cred dd{margin:0}
 @media (max-width:860px){.about-grid{grid-template-columns:1fr}.about-photo{position:relative;top:0;max-width:440px}.cred{grid-template-columns:1fr;gap:4px}}
 
-/* Tribunais — travelling horizontal */
-.courts{overflow-x:clip}
-.courts-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:48px}
-.courts-head p{color:var(--muted);max-width:46ch}
-.rail{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:18px;padding-left:max(var(--gl),calc((100vw - var(--max))/2 + 16px));padding-right:var(--gr);scroll-padding-left:max(var(--gl),calc((100vw - var(--max))/2 + 16px));scrollbar-width:none}
-.rail::-webkit-scrollbar{display:none}
-.courts.hs{padding-bottom:24px}
-.hs .rail-pin{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
-.hs .rail{overflow:visible;scroll-snap-type:none;width:max-content;will-change:transform}
-.rail figure{margin:0;flex:0 0 clamp(250px,25vw,340px);scroll-snap-align:start}
-.rail figure:nth-child(even){margin-top:56px}
-.rail .ph{aspect-ratio:3/4;overflow:hidden;border-radius:4px;background:var(--nude)}
-.rail figure:nth-child(3n+1) .ph{border-radius:999px 999px 4px 4px}
-.rail img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:filter .8s}
-.rail figcaption{font-size:.84rem;color:var(--muted);margin-top:14px;line-height:1.45}
-.rail figcaption b{display:block;color:var(--grafite);font-weight:600}
-.rail-end{flex:0 0 clamp(260px,26vw,360px);display:flex;flex-direction:column;justify-content:center;gap:14px;padding-inline:20px}
-.rail-end b{font-family:var(--f-display);font-size:var(--step-3);font-weight:400;line-height:1}
-.rail-progress{height:1px;background:var(--nude);margin-top:26px;position:relative}
-.rail-progress i{position:absolute;left:0;top:0;bottom:0;width:100%;background:var(--grafite);transform-origin:left;transform:scaleX(.1)}
-@media (max-width:860px){.courts-head{grid-template-columns:1fr}.rail figure:nth-child(even){margin-top:0}}
 
 /* Palestras e internacional */
 
@@ -260,13 +268,20 @@ section{padding-block:clamp(96px,10vw,150px);position:relative}
 .intl-photos img{width:100%;height:100%;object-fit:cover;transform:scale(1.14)}
 .intl-photos .a img{object-position:30% 50%}
 .intl p{color:var(--muted);margin-top:18px}
-.talk-list{margin-top:clamp(60px,8vw,100px);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.talk{border:1px solid var(--nude);border-radius:6px;padding:28px;display:flex;flex-direction:column;gap:10px;background:var(--linho);transition:transform .5s var(--ease),box-shadow .5s}
+.curio-head{margin-top:clamp(80px,9vw,130px)}
+.talk-list{margin-top:40px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.talk{appearance:none;font:inherit;color:inherit;text-align:left;cursor:pointer;border:1px solid var(--nude);border-radius:6px;padding:28px;display:flex;flex-direction:column;gap:10px;background:var(--linho);transition:transform .5s var(--ease),box-shadow .5s,border-color .4s}
+.talk .see{margin-top:auto;padding-top:10px;font-size:.85rem;font-weight:600;display:inline-flex;gap:8px}
+.talk .see i{font-style:normal;transition:transform .4s var(--ease)}
+.talk:hover{border-color:var(--ouro)}
+.talk:hover .see i{transform:translateX(5px)}
 .talk:hover{transform:translateY(-6px);box-shadow:0 24px 44px -30px rgba(38,33,29,.5)}
 .talk .yr{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro);font-weight:600}
 .talk h3{font-size:var(--step-1)}
 .talk p{color:var(--muted);font-size:.92rem}
-@media (max-width:900px){.intl{grid-template-columns:1fr}.talk-list{grid-template-columns:1fr}}
+@media (max-width:1100px){.talk-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.intl{grid-template-columns:1fr}}
+@media (max-width:600px){.talk-list{grid-template-columns:1fr}}
 
 /* Conteúdo */
 .content-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:48px}
@@ -325,6 +340,22 @@ footer p{max-width:60ch;line-height:1.6}
 .float-wa{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:70;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -12px rgba(0,0,0,.45);transition:transform .4s var(--ease)}
 .float-wa:hover{transform:scale(1.08)}
 .float-wa svg{width:28px;height:28px}
+.to-top{position:fixed;right:calc(25px + env(safe-area-inset-right,0px));bottom:calc(90px + env(safe-area-inset-bottom,0px));z-index:69;width:44px;height:44px;border-radius:50%;border:1px solid var(--nude);background:rgba(248,244,238,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--grafite);display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s,transform .4s var(--ease),background .3s}
+.to-top.on{opacity:1;transform:none;pointer-events:auto}
+@media (max-width:860px){.to-top{right:auto;left:calc(18px + env(safe-area-inset-left,0px));bottom:calc(25px + env(safe-area-inset-bottom,0px))}}
+.to-top:hover{background:var(--grafite);color:var(--linho)}
+.to-top svg{width:20px;height:20px}
+.talk-dlg{border:0;padding:0;background:var(--linho);color:var(--grafite);border-radius:10px;width:min(920px,calc(100vw - 32px));max-height:calc(100vh - 48px);box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
+.talk-dlg::backdrop{background:rgba(28,24,21,.72);backdrop-filter:blur(6px)}
+.talk-dlg[open]{animation:dlgIn .5s var(--ease)}
+@keyframes dlgIn{from{opacity:0;transform:translateY(20px) scale(.98)}}
+.dlg-in{padding:clamp(24px,4vw,44px);display:grid;gap:12px;position:relative}
+.dlg-in h3{font-size:var(--step-3);font-weight:400;max-width:20ch;padding-right:40px}
+.dlg-txt{color:var(--muted);max-width:62ch}
+.dlg-x{position:absolute;right:18px;top:18px;width:44px;height:44px;border-radius:50%;border:1px solid var(--nude);background:var(--areia);font-size:1.4rem;line-height:1;cursor:pointer;color:var(--grafite)}
+.dlg-photos{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:12px;padding-bottom:6px}
+.dlg-photos img{height:min(56vh,440px);width:auto;max-width:85vw;border-radius:6px;scroll-snap-align:start;flex:none;object-fit:cover}
+.dlg-empty{border:1px dashed var(--nude);border-radius:6px;padding:28px;color:var(--muted);font-size:.92rem;width:100%}
 
 @media (prefers-reduced-motion:reduce){.grain{animation:none}*{transition:none!important;animation:none!important}html{scroll-behavior:auto}.reel-frame{clip-path:none}.js .step{opacity:1}.reel .quote .wd{opacity:1}}
 </style>
@@ -348,9 +379,22 @@ footer p{max-width:60ch;line-height:1.6}
       <a href="#atuacao" class="link-u">Atuação</a>
       <a href="#como-funciona" class="link-u">Como funciona</a>
       <a href="#sobre" class="link-u">Sobre</a>
+      <a href="#palestras" class="link-u">Palestras</a>
+      <a href="#perguntas" class="link-u">Dúvidas</a>
       <a href="#contato" class="link-u">Contato</a>
       <a class="btn btn-wa wa-link magnet" href="https://wa.me/5521982241669" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuPanel" aria-label="Abrir menu"><i></i><i></i></button>
     </nav>
+    <div class="menu-panel" id="menuPanel" hidden>
+      <a href="#verifique">Você passa por isso?</a>
+      <a href="#atuacao">Áreas de atuação</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#sobre">Sobre Priscilla</a>
+      <a href="#palestras">Palestras e curiosidades</a>
+      <a href="#perguntas">Perguntas frequentes</a>
+      <a href="#contato">Contato e endereços</a>
+      <a class="btn btn-wa wa-link" href="https://wa.me/5521982241669" target="_blank" rel="noopener">Conversar pelo WhatsApp</a>
+    </div>
   </div>
 </header>
 
@@ -384,7 +428,6 @@ footer p{max-width:60ch;line-height:1.6}
     <div class="facts">
       <div><b><span data-count="10">10</span>+ anos</b><span>na advocacia trabalhista</span></div>
       <div><b>TRT e TST</b><span>atuação em recursos até a última instância</span></div>
-      <div><b>Só reclamantes</b><span>atendo exclusivamente quem trabalha</span></div>
     </div>
   </div>
 </section>
@@ -428,12 +471,12 @@ footer p{max-width:60ch;line-height:1.6}
     <aside class="result" aria-live="polite">
       <p class="eyebrow">Sua mensagem</p>
       <h3 id="res-title">Nada marcado ainda</h3>
-      <p class="empty" id="res-empty">Toque nas situações ao lado. Sem cadastro, sem formulário: a conversa começa direto com a advogada.</p>
+      <p class="empty" id="res-empty">Marque as situações que se aplicam a você. Sem cadastro e sem formulário: a mensagem vai direto para o WhatsApp do escritório.</p>
       <ul id="res-list" hidden></ul>
       <a class="btn btn-wa wa-link" id="res-btn" href="https://wa.me/5521982241669" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
         Enviar pelo WhatsApp</a>
-      <small>Cada caso depende dos documentos e dos fatos. A análise é feita na conversa com a advogada.</small>
+      <small>Você conversa direto com o escritório e seu caso é analisado por um advogado. Cada situação depende dos documentos e dos fatos.</small>
     </aside>
   </div>
 </section>
@@ -448,40 +491,35 @@ footer p{max-width:60ch;line-height:1.6}
       <p class="muted" style="max-width:40ch">Seis frentes em que a atuação é mais frequente. Se a sua situação não está aqui, vale perguntar.</p>
     </div>
     <div class="areas" id="areas">
-      <article class="area">
-        <div><span class="ref">CLT, art. 224</span><h3>Bancários e gerentes</h3></div>
-        <p>A jornada do bancário é de 6 horas. Quem cumpre 8 horas sem exercer de fato um cargo de confiança pode ter direito às horas excedentes. O mesmo vale para o gerente que só tem o título.</p>
-        <a class="go" href="#verifique" aria-label="Bancários e gerentes: é o meu caso">→</a>
+      <article class="area open">
+        <button class="area-head" type="button" aria-expanded="true"><span class="ah"><span class="ref">CLT, art. 224</span><h3>Bancários e gerentes</h3></span><span class="go" aria-hidden="true"></span></button>
+        <div class="area-body"><div><p>A jornada do bancário é de 6 horas. Quem cumpre 8 horas sem exercer de fato um cargo de confiança pode ter direito às horas excedentes. O mesmo vale para o gerente que só tem o título.</p><a class="link-u" href="#verifique" aria-label="Bancários e gerentes: é o meu caso">É o meu caso →</a></div></div>
       </article>
       <article class="area">
-        <div><span class="ref">CF, art. 7º, XVI · CLT, art. 59</span><h3>Horas extras não pagas</h3></div>
-        <p>O trabalho além da jornada deve ser pago com adicional de no mínimo 50%. Intervalo cortado, ponto com horários sempre iguais e banco de horas irregular também entram na conta.</p>
-        <a class="go" href="#verifique" aria-label="Horas extras: é o meu caso">→</a>
+        <button class="area-head" type="button" aria-expanded="false"><span class="ah"><span class="ref">CF, art. 7º, XVI · CLT, art. 59</span><h3>Horas extras não pagas</h3></span><span class="go" aria-hidden="true"></span></button>
+        <div class="area-body"><div><p>O trabalho além da jornada deve ser pago com adicional de no mínimo 50%. Intervalo cortado, ponto com horários sempre iguais e banco de horas irregular também entram na conta.</p><a class="link-u" href="#verifique" aria-label="Horas extras: é o meu caso">É o meu caso →</a></div></div>
       </article>
       <article class="area">
-        <div><span class="ref">Lei 8.213/91, arts. 19 a 21 e 118</span><h3>Acidente e doença ocupacional</h3></div>
-        <p>Lesões e doenças causadas ou agravadas pelo trabalho podem gerar indenização e garantia de emprego de 12 meses após o retorno do afastamento pelo INSS.</p>
-        <a class="go" href="#verifique" aria-label="Acidente e doença ocupacional: é o meu caso">→</a>
+        <button class="area-head" type="button" aria-expanded="false"><span class="ah"><span class="ref">Lei 8.213/91, arts. 19 a 21 e 118</span><h3>Acidente e doença ocupacional</h3></span><span class="go" aria-hidden="true"></span></button>
+        <div class="area-body"><div><p>Lesões e doenças causadas ou agravadas pelo trabalho podem gerar indenização e garantia de emprego de 12 meses após o retorno do afastamento pelo INSS.</p><a class="link-u" href="#verifique" aria-label="Acidente e doença ocupacional: é o meu caso">É o meu caso →</a></div></div>
       </article>
       <article class="area">
-        <div><span class="ref">CLT, art. 483</span><h3>FGTS atrasado, insalubridade e a justa causa da empresa</h3></div>
-        <p>Quando a empresa deixa de depositar o FGTS ou de pagar a insalubridade, o trabalhador pode encerrar o contrato por culpa dela, a rescisão indireta, e receber como numa dispensa sem justa causa.</p>
-        <a class="go" href="#verifique" aria-label="Rescisão indireta: é o meu caso">→</a>
+        <button class="area-head" type="button" aria-expanded="false"><span class="ah"><span class="ref">CLT, art. 483</span><h3>FGTS atrasado, insalubridade e a justa causa da empresa</h3></span><span class="go" aria-hidden="true"></span></button>
+        <div class="area-body"><div><p>Quando a empresa deixa de depositar o FGTS ou de pagar a insalubridade, o trabalhador pode encerrar o contrato por culpa dela, a rescisão indireta, e receber como numa dispensa sem justa causa.</p><a class="link-u" href="#verifique" aria-label="Rescisão indireta: é o meu caso">É o meu caso →</a></div></div>
       </article>
       <article class="area">
-        <div><span class="ref">CLT, arts. 189 a 192 · NR-15</span><h3>Direito hospitalar trabalhista</h3></div>
-        <p>Enfermeiros, técnicos e demais profissionais de saúde expostos a agentes biológicos têm direito ao adicional de insalubridade. Sem o pagamento, cabe cobrança e, conforme o caso, rescisão indireta.</p>
-        <a class="go" href="#verifique" aria-label="Direito hospitalar: é o meu caso">→</a>
+        <button class="area-head" type="button" aria-expanded="false"><span class="ah"><span class="ref">CLT, arts. 189 a 192 · NR-15</span><h3>Direito hospitalar trabalhista</h3></span><span class="go" aria-hidden="true"></span></button>
+        <div class="area-body"><div><p>Enfermeiros, técnicos e demais profissionais de saúde expostos a agentes biológicos têm direito ao adicional de insalubridade. Sem o pagamento, cabe cobrança e, conforme o caso, rescisão indireta.</p><a class="link-u" href="#verifique" aria-label="Direito hospitalar: é o meu caso">É o meu caso →</a></div></div>
       </article>
       <article class="area">
-        <div><span class="ref">Lei 13.103/2015 · STF, ADI 5322</span><h3>Direito dos caminhoneiros</h3></div>
-        <p>Tempo de espera para carga e descarga e tempo à disposição em viagem fazem parte da jornada. Jornadas longas sem o pagamento correto das horas extras podem ser cobradas.</p>
-        <a class="go" href="#verifique" aria-label="Caminhoneiros: é o meu caso">→</a>
+        <button class="area-head" type="button" aria-expanded="false"><span class="ah"><span class="ref">Lei 13.103/2015 · STF, ADI 5322</span><h3>Direito dos caminhoneiros</h3></span><span class="go" aria-hidden="true"></span></button>
+        <div class="area-body"><div><p>Tempo de espera para carga e descarga e tempo à disposição em viagem fazem parte da jornada. Jornadas longas sem o pagamento correto das horas extras podem ser cobradas.</p><a class="link-u" href="#verifique" aria-label="Caminhoneiros: é o meu caso">É o meu caso →</a></div></div>
       </article>
     </div>
     <div class="prev">
-      <p class="eyebrow">Também atendo · Previdenciário</p>
+      <p class="eyebrow">Também atende · Previdenciário</p>
       <ul><li>Salário-maternidade</li><li>Aposentadoria por idade e por incapacidade</li><li>Benefício negado pelo INSS</li></ul>
+      <a class="btn btn-wa prev-wa" id="prevWa" href="https://wa.me/5521982241669" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>Falar sobre previdenciário</a>
     </div>
   </div>
 </section>
@@ -491,16 +529,16 @@ footer p{max-width:60ch;line-height:1.6}
   <div class="wrap process-grid">
     <div class="process-intro">
       <p class="eyebrow">Como funciona</p>
-      <h2 class="split" style="margin-top:18px">Um processo trabalhista tem cinco etapas. <em>Eu fico em todas.</em></h2>
+      <h2 class="split" style="margin-top:18px">Um processo trabalhista tem cinco etapas. <em>O escritório acompanha todas.</em></h2>
       <p>Muita gente ganha a ação e demora a receber porque ninguém acompanhou a execução. Aqui, o caso só termina quando o valor chega a você.</p>
     </div>
     <ol class="steps" id="steps">
       <span class="fill" aria-hidden="true"></span>
-      <li class="step"><span class="n">1</span><h3>Primeira conversa</h3><p>Você conta o que aconteceu e envia os documentos que tiver: carteira de trabalho, contracheques, extrato do FGTS, mensagens. Eu explico, sem juridiquês, o que pode ser pedido.</p><span class="tag">WhatsApp ou presencial</span></li>
-      <li class="step"><span class="n">2</span><h3>Reclamatória trabalhista</h3><p>Preparo a ação com as provas organizadas e acompanho a audiência ao seu lado.</p><span class="tag">Vara do Trabalho</span></li>
-      <li class="step"><span class="n">3</span><h3>Instrução e sentença</h3><p>Testemunhas, perícias e documentos. Despacho com o juiz quando o caso pede atenção direta.</p><span class="tag">Despachos presenciais</span></li>
-      <li class="step"><span class="n">4</span><h3>Recursos</h3><p>Se a decisão for questionada, sigo para o Tribunal Regional e, quando cabe, para o TST, com sustentação oral na sessão de julgamento.</p><span class="tag">TRT e TST</span></li>
-      <li class="step"><span class="n">5</span><h3>Execução e recebimento</h3><p>Cálculos, penhora e cobrança até o pagamento. É a fase em que muitos processos param, e onde eu insisto.</p><span class="tag">Até o valor chegar</span></li>
+      <li class="step"><span class="n">1</span><h3>Primeira conversa</h3><p>Você conta o que aconteceu e envia os documentos que tiver: carteira de trabalho, contracheques, extrato do FGTS, mensagens. A equipe explica, sem juridiquês, o que pode ser pedido.</p><span class="tag">WhatsApp ou presencial</span></li>
+      <li class="step"><span class="n">2</span><h3>Reclamatória trabalhista</h3><p>A ação é preparada com as provas organizadas, e a audiência é acompanhada ao seu lado.</p><span class="tag">Vara do Trabalho</span></li>
+      <li class="step"><span class="n">3</span><h3>Instrução e sentença</h3><p>Testemunhas, perícias e documentos. Quando o caso pede atenção direta, Priscilla despacha pessoalmente com o juiz.</p><span class="tag">Despachos presenciais</span></li>
+      <li class="step"><span class="n">4</span><h3>Recursos</h3><p>Se a decisão for questionada, o caso segue para o Tribunal Regional e, quando cabe, para o TST, com sustentação oral de Priscilla na sessão de julgamento.</p><span class="tag">TRT e TST</span></li>
+      <li class="step"><span class="n">5</span><h3>Execução e recebimento</h3><p>Cálculos, penhora e cobrança até o pagamento. É a fase em que muitos processos param, e onde o escritório mais insiste.</p><span class="tag">Até o valor chegar</span></li>
     </ol>
   </div>
 </section>
@@ -509,46 +547,27 @@ footer p{max-width:60ch;line-height:1.6}
   <div class="wrap about-grid">
     <div class="arch about-photo"><img src="img/escritorio-laptop.webp" alt="Priscilla Diogo trabalhando no escritório" width="960" height="1280" loading="lazy"><span class="sig" aria-hidden="true">Priscilla Diogo</span></div>
     <div>
-      <p class="eyebrow">Sobre mim</p>
-      <p class="manifest split">Escolhi um lado da mesa: <em>o de quem trabalha.</em></p>
+      <p class="eyebrow">Sobre Priscilla</p>
+      <p class="manifest split">Ela escolheu um lado da mesa: <em>o de quem trabalha.</em></p>
       <div class="about-text">
-        <p>Sou Priscilla Diogo, advogada especializada em Direito e Processo do Trabalho. Há mais de dez anos atuo na advocacia trabalhista ao lado de quem trabalha, em causas que vão da hora extra não paga ao acidente que mudou uma vida.</p>
-        <p>Aprendi cedo que uma sentença favorável não basta. O direito só existe de verdade quando o valor chega a quem trabalhou. Por isso acompanho cada caso do início ao fim, despacho pessoalmente com magistrados e faço questão de estar na tribuna quando o processo sobe para os tribunais.</p>
-        <p>Meu escritório sou eu. Quem me procura fala comigo, e não com uma equipe que muda a cada etapa.</p>
+        <p>Priscilla Diogo é advogada especializada em Direito e Processo do Trabalho. Há mais de dez anos atua ao lado de quem trabalha, em causas que vão da hora extra não paga ao acidente que mudou uma vida.</p>
+        <div class="more" id="aboutMore">
+          <div class="more-in">
+            <p>Cedo, aprendeu que uma sentença favorável não basta: o direito só existe de verdade quando o valor chega a quem trabalhou. Por isso acompanha cada caso do início ao fim, despacha pessoalmente com magistrados e faz questão de estar na tribuna quando o processo sobe para os tribunais, onde já realizou sustentações orais em mais de 15 deles.</p>
+            <p>À frente do escritório que leva o seu nome, Priscilla conta com uma equipe de apoio que acompanha cada etapa do processo. A estratégia e as decisões importantes de cada caso passam por ela.</p>
+          </div>
+        </div>
+        <button class="more-btn" type="button" aria-expanded="false" aria-controls="aboutMore"><span>Continuar lendo</span><i aria-hidden="true">+</i></button>
       </div>
       <dl class="creds">
         <div class="cred"><dt>Graduação</dt><dd>Bacharel em Direito, Universidade Cândido Mendes (UCAM/RJ)</dd></div>
         <div class="cred"><dt>Pós-graduação</dt><dd>Direito e Processo do Trabalho, Universidade de Santa Cruz do Sul (UNISC/RS)</dd></div>
         <div class="cred"><dt>Pós-graduação</dt><dd>Direito Previdenciário, Pontifícia Universidade Católica (PUC/RS)</dd></div>
-        <div class="cred"><dt>Inscrição</dt><dd>OAB/RJ nº [preencher]</dd></div>
+        <div class="cred"><dt>Extensão</dt><dd>Curso de Execução Trabalhista, Universidade de Santa Cruz do Sul (UNISC/RS)</dd></div>
+        <div class="cred"><dt>Congresso</dt><dd>XIV Congresso de Direito e Processo do Trabalho (on-line)</dd></div>
       </dl>
     </div>
   </div>
-</section>
-
-<section class="courts tone-pedra" id="tribunais">
-  <div class="wrap courts-head">
-    <div>
-      <p class="eyebrow">Nos tribunais</p>
-      <h2 class="split" style="margin-top:18px">Presença física, <em>do fórum ao plenário.</em></h2>
-    </div>
-    <p>Já fiz sustentação oral em mais de 15 tribunais do país. Estar presente no julgamento é a chance de falar diretamente com quem decide.</p>
-  </div>
-  <div class="rail-track" id="railtrack"><div class="rail-pin" id="railpin">
-    <div class="rail" id="rail" tabindex="0" aria-label="Galeria de fotos nos tribunais">
-      <figure><div class="ph"><img src="img/trt-rj.webp" alt="Priscilla em frente ao Fórum Ministro Arnaldo Süssekind" loading="lazy"></div><figcaption><b>Justiça do Trabalho, Rio de Janeiro</b>Fórum Ministro Arnaldo Süssekind</figcaption></figure>
-      <figure><div class="ph"><img src="img/plenario-1.webp" alt="Priscilla na tribuna de um plenário" loading="lazy"></div><figcaption><b>Sessão de julgamento</b>Sustentação oral em plenário</figcaption></figure>
-      <figure><div class="ph"><img src="img/trt15.webp" alt="Priscilla em frente ao TRT da 15ª Região" loading="lazy"></div><figcaption><b>TRT da 15ª Região</b>Campinas (SP)</figcaption></figure>
-      <figure><div class="ph"><img src="img/plenario-2.webp" alt="Priscilla em plenário com bandeiras ao fundo" loading="lazy"></div><figcaption><b>Plenário</b>Sessão de julgamento</figcaption></figure>
-      <figure><div class="ph"><img src="img/palacio.webp" alt="Priscilla em frente ao Palácio da Justiça" loading="lazy"></div><figcaption><b>Palácio da Justiça</b>Rio de Janeiro</figcaption></figure>
-      <figure><div class="ph"><img src="img/forum.webp" alt="Priscilla na entrada de um Fórum da Justiça do Trabalho" loading="lazy"></div><figcaption><b>Fórum da Justiça do Trabalho</b>Despacho presencial</figcaption></figure>
-      <figure><div class="ph"><img src="img/pasta.webp" alt="Priscilla segurando uma pasta de documentos" loading="lazy"></div><figcaption><b>Dia de despacho</b>Atendimento direto nos processos</figcaption></figure>
-      <figure><div class="ph"><img src="img/plenario-3.webp" alt="Priscilla na tribuna" loading="lazy"></div><figcaption><b>Na tribuna</b>Sustentação oral</figcaption></figure>
-      <figure><div class="ph"><img src="img/palmas.webp" alt="Priscilla em frente ao fórum trabalhista de Palmas" loading="lazy"></div><figcaption><b>Justiça do Trabalho</b>Palmas (TO)</figcaption></figure>
-      <div class="rail-end"><b>+15</b><span class="muted">tribunais com sustentação oral, e a meta de chegar aos 24 TRTs do país.</span></div>
-    </div>
-    <div class="wrap"><div class="rail-progress"><i id="railbar"></i></div></div>
-  </div></div>
 </section>
 
 <section class="talks tone-areia" id="palestras">
@@ -562,21 +581,26 @@ footer p{max-width:60ch;line-height:1.6}
       <div>
         <p class="eyebrow">Palestras · Internacional</p>
         <h2 class="split" style="margin-top:18px">O direito do trabalho brasileiro, <em>debatido na China.</em></h2>
-        <p>Em 2026, fui convidada para uma palestra e uma reunião na China sobre direitos trabalhistas e sua aplicação no Brasil, ao lado de profissionais de vários países.</p>
-        <p>Levar o tema para fora do país reforça o que defendo aqui: as regras de proteção ao trabalhador valem e precisam ser cumpridas.</p>
+        <p>Em 2023, Priscilla foi convidada para uma palestra e uma reunião na China sobre o direito do trabalho e sua aplicação no Brasil, nas empresas, ao lado de profissionais de vários países.</p>
+        <p>Levar o tema para fora do país reforça o que ela defende aqui: as regras de proteção ao trabalhador valem e precisam ser cumpridas.</p>
       </div>
     </div>
+    <div class="curio-head">
+      <p class="eyebrow">Curiosidades</p>
+      <h2 class="split" style="margin-top:18px">Além dos tribunais.</h2>
+    </div>
     <div class="talk-list">
-      <article class="talk"><span class="yr">China · 2026</span><h3>Direitos trabalhistas e sua aplicação no Brasil</h3><p>Palestra e reunião em encontro internacional.</p></article>
-      <article class="talk"><span class="yr">Palestra</span><h3>Caminhoneiros: excesso de jornada e horas extras</h3><p>O tempo de espera, a ADI 5322 e o que muda no bolso do motorista.</p></article>
-      <article class="talk"><span class="yr">OAB/RJ</span><h3>Participação em evento da Ordem</h3><p>Fala em evento na sede da OAB/RJ.</p></article>
+      <button class="talk" type="button" data-talk="china"><span class="yr">China · 2023</span><h3>O direito do trabalho e sua aplicação no Brasil</h3><p>Palestra e reunião em encontro internacional sobre as normas trabalhistas brasileiras nas empresas.</p><span class="see">Ver fotos <i aria-hidden="true">→</i></span></button>
+      <button class="talk" type="button" data-talk="carretas"><span class="yr">Palestra · 2026</span><h3>Caminhoneiros e o tempo de espera</h3><p>A jornada do motorista, o tempo de espera e as horas extras que deixam de ser pagas.</p><span class="see">Ver fotos <i aria-hidden="true">→</i></span></button>
+      <button class="talk" type="button" data-talk="oab"><span class="yr">OAB/RJ · 2025</span><h3>Horas extras burladas nas empresas</h3><p>Palestra sobre as horas extras burladas nas empresas e o não pagamento aos funcionários.</p><span class="see">Ver fotos <i aria-hidden="true">→</i></span></button>
+      <button class="talk" type="button" data-talk="auditoria"><span class="yr">Auditoria</span><h3>Condições de trabalho nas empresas</h3><p>Auditoria realizada em empresas para constatar a qualidade do ambiente de trabalho e eventual insalubridade.</p><span class="see">Ver detalhes <i aria-hidden="true">→</i></span></button>
     </div>
   </div>
 </section>
 
 <section id="conteudo" class="tone-linho">
   <div class="wrap">
-    <p class="eyebrow">Conteúdo e curiosidades</p>
+    <p class="eyebrow">Conteúdo</p>
     <h2 class="split" style="margin-top:18px;max-width:18ch">Direito do trabalho <em>explicado em minutos.</em></h2>
     <div class="content-grid">
       <a class="post" href="https://www.instagram.com/priscilladiogo/" target="_blank" rel="noopener"><span class="k">FGTS</span><h3>FGTS atrasado: dá para sair sem pedir demissão?</h3><p>O que é a rescisão indireta e quando ela se aplica.</p><span class="go">Ver no Instagram →</span></a>
@@ -598,7 +622,6 @@ footer p{max-width:60ch;line-height:1.6}
       <details><summary>Posso processar a empresa ainda trabalhando nela?</summary><p>Sim, em algumas situações. Quando há falta grave da empresa, como FGTS atrasado, é possível pedir a rescisão indireta. Cada caso precisa ser analisado com os documentos.</p></details>
       <details><summary>Quais documentos devo separar?</summary><p>Carteira de trabalho, contracheques, extrato do FGTS, termo de rescisão (se houver), controles de ponto e mensagens ou e-mails que mostrem a rotina de trabalho. Se não tiver tudo, comece pelo que tiver.</p></details>
       <details><summary>Como é o atendimento?</summary><p>O primeiro contato é pelo WhatsApp. O atendimento presencial é no Centro do Rio ou na Freguesia, de segunda a sexta, das 9h às 18h.</p></details>
-      <details><summary>Você atende empresas?</summary><p>Não. Atuo exclusivamente na defesa de trabalhadores.</p></details>
     </div>
   </div>
 </section>
@@ -608,7 +631,7 @@ footer p{max-width:60ch;line-height:1.6}
   <div class="wrap contact-grid">
     <div>
       <p class="eyebrow">Contato</p>
-      <p class="big split" style="margin-top:18px">Conte o que aconteceu. <em>A primeira conversa é comigo.</em></p>
+      <p class="big split" style="margin-top:18px">Conte o que aconteceu. <em>O escritório responde pelo WhatsApp.</em></p>
       <div class="ctas">
         <a class="btn btn-wa wa-link magnet" href="https://wa.me/5521982241669" target="_blank" rel="noopener">WhatsApp (21) 98224-1669</a>
         <a class="btn btn-ghost magnet" href="https://www.instagram.com/priscilladiogo/" target="_blank" rel="noopener">@priscilladiogo</a>
@@ -630,6 +653,18 @@ footer p{max-width:60ch;line-height:1.6}
     <p>Priscilla Diogo do Carmo · OAB/RJ nº [preencher]<br>Conteúdo de caráter informativo, conforme o Provimento 205/2021 do Conselho Federal da OAB. © 2026</p>
   </div>
 </footer>
+
+<dialog class="talk-dlg" id="talkDlg" aria-labelledby="dlgTitle">
+  <div class="dlg-in">
+    <button class="dlg-x" type="button" id="dlgClose" aria-label="Fechar">×</button>
+    <p class="eyebrow" id="dlgYr"></p>
+    <h3 id="dlgTitle"></h3>
+    <p class="dlg-txt" id="dlgTxt"></p>
+    <div class="dlg-photos" id="dlgPhotos"></div>
+  </div>
+</dialog>
+
+<button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
 
 <a class="float-wa wa-link" href="https://wa.me/5521982241669" target="_blank" rel="noopener" aria-label="Conversar pelo WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
@@ -668,6 +703,47 @@ footer p{max-width:60ch;line-height:1.6}
     vids.forEach(function(v){io.observe(v)});
   }
 
+  /* Previdenciário: mensagem própria */
+  document.getElementById("prevWa").href="https://wa.me/"+WA+"?text="+encodeURIComponent("Olá, vim pelo site e tenho uma dúvida sobre direito previdenciário.");
+
+  /* Áreas: acordeão */
+  document.querySelectorAll(".area-head").forEach(function(h){h.addEventListener("click",function(){var a=h.parentNode,o=!a.classList.contains("open");a.classList.toggle("open",o);h.setAttribute("aria-expanded",o)})});
+
+  /* Sobre: continuar lendo */
+  document.querySelectorAll(".more-btn").forEach(function(b){b.addEventListener("click",function(){var m=document.getElementById(b.getAttribute("aria-controls")),o=!m.classList.contains("open");m.classList.toggle("open",o);b.setAttribute("aria-expanded",o);b.querySelector("span").textContent=o?"Mostrar menos":"Continuar lendo";setTimeout(function(){if(window.ScrollTrigger)ScrollTrigger.refresh()},750)})});
+
+  /* Curiosidades: janela com fotos */
+  var TALKS={
+    china:{yr:"China · 2023",t:"O direito do trabalho e sua aplicação no Brasil",x:"Convidada para palestra e reunião em encontro internacional na China, Priscilla falou sobre o direito do trabalho brasileiro e sua aplicação nas empresas, ao lado de profissionais de vários países.",f:["china-fala","china-reuniao","china-grupo","china-sala","china-retrato"]},
+    carretas:{yr:"Palestra · 2026",t:"Caminhoneiros e o tempo de espera",x:"Palestra sobre a jornada dos motoristas profissionais, o tempo de espera para carga e descarga e as horas extras que deixam de ser pagas.",f:[]},
+    oab:{yr:"OAB/RJ · 2025",t:"Horas extras burladas nas empresas",x:"Palestra na OAB/RJ sobre as práticas que burlam o controle de horas extras nas empresas e o não pagamento aos funcionários.",f:[]},
+    auditoria:{yr:"Auditoria",t:"Condições de trabalho nas empresas",x:"Auditoria realizada em empresas para constatar a qualidade do ambiente de trabalho e a eventual exposição a agentes insalubres.",f:[]}
+  };
+  var dlg=document.getElementById("talkDlg");
+  document.querySelectorAll("[data-talk]").forEach(function(b){b.addEventListener("click",function(){var d=TALKS[b.dataset.talk];
+    document.getElementById("dlgYr").textContent=d.yr;document.getElementById("dlgTitle").textContent=d.t;document.getElementById("dlgTxt").textContent=d.x;
+    var ph=document.getElementById("dlgPhotos");ph.innerHTML="";
+    if(d.f.length){d.f.forEach(function(n){var i=document.createElement("img");i.src="img/"+n+".webp";i.alt=d.t;i.loading="lazy";ph.appendChild(i)})}
+    else{var e=document.createElement("p");e.className="dlg-empty";e.textContent="Fotos em breve.";ph.appendChild(e)}
+    if(dlg.showModal){dlg.showModal()}else{dlg.setAttribute("open","")}
+    if(window.__lenis)window.__lenis.stop()})});
+  function closeDlg(){if(dlg.close)dlg.close();else dlg.removeAttribute("open")}
+  document.getElementById("dlgClose").addEventListener("click",closeDlg);
+  dlg.addEventListener("click",function(e){if(e.target===dlg)closeDlg()});
+  dlg.addEventListener("close",function(){if(window.__lenis)window.__lenis.start()});
+
+  /* Menu (tablet/celular) */
+  var mb=document.getElementById("menuBtn"),mp=document.getElementById("menuPanel");
+  function setMenu(o){mp.hidden=!o;mb.setAttribute("aria-expanded",o);mb.setAttribute("aria-label",o?"Fechar menu":"Abrir menu")}
+  mb.addEventListener("click",function(){setMenu(mp.hidden)});
+  mp.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){setMenu(false)})});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")setMenu(false)});
+
+  /* Voltar ao topo */
+  var tt=document.getElementById("toTop");
+  window.addEventListener("scroll",function(){tt.classList.toggle("on",window.scrollY>window.innerHeight)},{passive:true});
+  tt.addEventListener("click",function(){if(window.__lenis)window.__lenis.scrollTo(0,{duration:1.6});else window.scrollTo({top:0,behavior:"smooth"})});
+
   /* Cabeçalho: some ao descer, volta ao subir */
   var top=document.getElementById("top"),lastY=0;
   function onScroll(){top.classList.toggle("scrolled",window.scrollY>40)}
@@ -690,10 +766,10 @@ footer p{max-width:60ch;line-height:1.6}
   /* Rolagem suave */
   var lenis=null;
   if(window.Lenis){
-    lenis=new Lenis({lerp:.085,wheelMultiplier:.9});
+    lenis=new Lenis({lerp:.085,wheelMultiplier:.9});window.__lenis=lenis;
     lenis.on("scroll",ScrollTrigger.update);
     gsap.ticker.add(function(t){lenis.raf(t*1000)});gsap.ticker.lagSmoothing(0);
-    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var id=a.getAttribute("href");if(id.length>1&&document.querySelector(id)){e.preventDefault();lenis.scrollTo(id,{offset:-80,duration:1.6})}})});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener("click",function(e){var id=a.getAttribute("href");if(id.length>1&&document.querySelector(id)){e.preventDefault();lenis.scrollTo(id,{offset:-90,duration:1.6})}})});
   }
 
   /* Abertura: cortina com o arco do logotipo */
@@ -760,24 +836,6 @@ footer p{max-width:60ch;line-height:1.6}
   });
   gsap.utils.toArray("[data-speed]").forEach(function(el){gsap.to(el,{y:function(){return -parseFloat(el.dataset.speed)*6},ease:"none",scrollTrigger:{trigger:".intl",start:"top bottom",end:"bottom top",scrub:true}})});
 
-  /* Tribunais: travelling horizontal fixado (desktop) */
-  var mm=gsap.matchMedia();
-  mm.add("(min-width:861px)",function(){
-    var sec=document.getElementById("tribunais"),track=document.getElementById("railtrack"),rail=document.getElementById("rail");
-    sec.classList.add("hs");
-    var dist=function(){return Math.max(0,rail.scrollWidth-window.innerWidth)};
-    var size=function(){track.style.height=(dist()+window.innerHeight)+"px"};
-    size();
-    var tw=gsap.to(rail,{x:function(){return -dist()},ease:"none",scrollTrigger:{trigger:track,start:"top top",end:"bottom bottom",scrub:.8,invalidateOnRefresh:true,onRefreshInit:size,onUpdate:function(st){gsap.set("#railbar",{scaleX:.1+.9*st.progress})}}});
-    rail.querySelectorAll("img").forEach(function(img){img.addEventListener("load",function(){ScrollTrigger.refresh()},{once:true})});
-    return function(){sec.classList.remove("hs");track.style.height="";gsap.set(rail,{x:0})};
-  });
-  mm.add("(max-width:860px)",function(){
-    var rail=document.getElementById("rail");
-    var f=function(){var m=rail.scrollWidth-rail.clientWidth;gsap.set("#railbar",{scaleX:.1+.9*(m?rail.scrollLeft/m:0)})};
-    rail.addEventListener("scroll",f,{passive:true});f();
-    return function(){rail.removeEventListener("scroll",f)};
-  });
 
   /* Contador */
   gsap.utils.toArray("[data-count]").forEach(function(el){var o={v:0};gsap.to(o,{v:+el.dataset.count,duration:1.8,ease:"power2.out",delay:withIntro?3:.8,onUpdate:function(){el.textContent=Math.round(o.v)}})});
